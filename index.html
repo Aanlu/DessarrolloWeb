@@ -11,14 +11,30 @@
         <h1>UAS | Sistema de Laboratorios FIM</h1>
         <nav>
             <a href="index.html" class="activo">Panel de Control</a>
-            <a href="vistas/equipos/registrar_equipo.html">Inventario</a>
-            <a href="vistas/prestamos/nuevo_prestamo.html">Gestión de Préstamos</a>
+            <a href="vistas/equipos/catalogo.html">Catálogo de Equipos</a>
+            <a href="vistas/usuarios/registrar_usuario.html">Gestión de Usuarios</a>
+            <a href="vistas/prestamos/historial.html">Historial y Préstamos</a>
         </nav>
     </header>
 
     <main>
-        <h2>Resumen de Operaciones</h2>
-        <p>Monitoreo en tiempo real de los equipos de la Facultad.</p>
+        <h2>Resumen de Operaciones en Tiempo Real</h2>
+        <p>Monitoreo de los equipos de la Facultad de Ingeniería Mochis.</p>
+        
+        <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+            <div class="tarjeta-formulario" style="flex: 1; text-align: center; border-top: 4px solid var(--uas-oro);">
+                <h3>Equipos Prestados</h3>
+                <p style="font-size: 24px; font-weight: bold; color: var(--uas-azul);">--</p>
+            </div>
+            <div class="tarjeta-formulario" style="flex: 1; text-align: center; border-top: 4px solid var(--uas-oro);">
+                <h3>Devoluciones Pendientes</h3>
+                <p style="font-size: 24px; font-weight: bold; color: #dc3545;">--</p>
+            </div>
+            <div class="tarjeta-formulario" style="flex: 1; text-align: center; border-top: 4px solid var(--uas-oro);">
+                <h3>Total en Inventario</h3>
+                <p style="font-size: 24px; font-weight: bold; color: var(--uas-azul);">--</p>
+            </div>
+        </div>
         
         <table>
             <thead>
@@ -34,14 +50,14 @@
                 <tr>
                     <td>PR-001</td>
                     <td>2008390-8</td>
-                    <td>EQ-CAÑON-05</td>
+                    <td>FIM-LAP-05</td>
                     <td>08:00 AM</td>
                     <td style="color: red; font-weight: bold;">En Uso</td>
                 </tr>
                 <tr>
                     <td>PR-002</td>
                     <td>1904562-1</td>
-                    <td>EQ-LAP-12</td>
+                    <td>FIM-CABLE-12</td>
                     <td>09:30 AM</td>
                     <td style="color: green; font-weight: bold;">Devuelto</td>
                 </tr>
