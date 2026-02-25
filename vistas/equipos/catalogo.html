@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Equipos - FIM</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>UAS | Sistema de Laboratorios FIM</h1>
+        <nav>
+            <a href="../../index.html">Panel de Control</a>
+            <a href="registrar_equipo.html" class="activo">Inventario</a>
+            <a href="../usuarios/registrar_usuario.html">Usuarios</a>
+            <a href="../prestamos/nuevo_prestamo.html">Préstamos</a>
+        </nav>
+    </header>
+
+    <main>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Catálogo General de Equipos</h2>
+            <a href="registrar_equipo.html" class="btn">+ Añadir Nuevo Equipo</a>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID / Num. Serie</th>
+                    <th>Descripción</th>
+                    <th>Categoría</th>
+                    <th>Estado Actual</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>FIM-LAP-001</td>
+                    <td>Laptop Acer Nitro 5</td>
+                    <td>Cómputo</td>
+                    <td style="color: green; font-weight: bold;">Disponible</td>
+                    <td>
+                        <a href="#" style="color: var(--uas-azul);">Editar</a> | 
+                        <a href="#" style="color: red;">Dar de baja</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>FIM-PROY-003</td>
+                    <td>Proyector Epson x200</td>
+                    <td>Proyección</td>
+                    <td style="color: orange; font-weight: bold;">En Mantenimiento</td>
+                    <td>
+                        <a href="#" style="color: var(--uas-azul);">Editar</a> | 
+                        <a href="#" style="color: red;">Dar de baja</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+</body>
+</html>

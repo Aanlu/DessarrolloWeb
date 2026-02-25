@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Préstamos - FIM</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>UAS | Sistema de Laboratorios FIM</h1>
+        <nav>
+            <a href="../../index.html">Panel de Control</a>
+            <a href="../equipos/registrar_equipo.html">Inventario</a>
+            <a href="../usuarios/registrar_usuario.html">Usuarios</a>
+            <a href="nuevo_prestamo.html" class="activo">Préstamos</a>
+        </nav>
+    </header>
+
+    <main>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Registro Histórico y Devoluciones</h2>
+            <a href="nuevo_prestamo.html" class="btn">+ Registrar Salida</a>
+        </div>
+
+        <div class="tarjeta-formulario" style="margin-bottom: 20px; padding: 15px;">
+            <form style="display: flex; gap: 10px; align-items: center;">
+                <label>Buscar por Matrícula:</label>
+                <input type="text" placeholder="Ej. 2008390-8" style="flex: 1;">
+                <button type="button" class="btn">Buscar</button>
+            </form>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Matrícula</th>
+                    <th>ID Equipo</th>
+                    <th>Salida</th>
+                    <th>Entrada</th>
+                    <th>Estado de Entrega</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background-color: #f8d7da;"> <td>PR-001</td>
+                    <td>2008390-8</td>
+                    <td>FIM-LAP-001</td>
+                    <td>10/10/2025 08:00 AM</td>
+                    <td>-- : --</td>
+                    <td>
+                        <button class="btn" style="padding: 5px 10px; font-size: 12px;">Registrar Devolución</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>PR-000</td>
+                    <td>1904562-1</td>
+                    <td>FIM-CABLE-05</td>
+                    <td>09/10/2025 11:00 AM</td>
+                    <td>09/10/2025 01:00 PM</td>
+                    <td style="color: green;">Entregado OK</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+</body>
+</html>
