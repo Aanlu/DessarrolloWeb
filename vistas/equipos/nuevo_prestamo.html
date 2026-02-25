@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Préstamo - FIM</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>UAS | Sistema de Laboratorios FIM</h1>
+        <nav>
+            <a href="../../index.html">Panel de Control</a>
+            <a href="../equipos/registrar_equipo.html">Inventario</a>
+            <a href="nuevo_prestamo.html" class="activo">Gestión de Préstamos</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Registrar Salida de Equipo (Bitácora)</h2>
+        
+        <div class="tarjeta-formulario">
+            <form action="../../backend/procesar_prestamo.php" method="POST" enctype="multipart/form-data">
+                
+                <div class="grupo-form">
+                    <label>Matrícula / ID del Solicitante:</label>
+                    <input type="text" name="matricula" placeholder="Ingrese matrícula del alumno o profesor" required>
+                    <small style="color: #666; margin-top: 5px;">El sistema buscará automáticamente la carrera y el nombre vinculados.</small>
+                </div>
+
+                <div class="grupo-form">
+                    <label>ID del Equipo a Prestar:</label>
+                    <input type="text" name="id_equipo" placeholder="Ej. FIM-LAP-001" required>
+                </div>
+
+                <div style="display: flex; gap: 20px;">
+                    <div class="grupo-form" style="flex: 1;">
+                        <label>Fecha de Salida:</label>
+                        <input type="date" name="fecha_salida" required>
+                    </div>
+                    <div class="grupo-form" style="flex: 1;">
+                        <label>Hora de Salida:</label>
+                        <input type="time" name="hora_salida" required>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 20px;">
+                    <div class="grupo-form" style="flex: 1;">
+                        <label>Semestre:</label>
+                        <select name="semestre" required>
+                            <option value="1">1</option>
+                            <option value="3" selected>3</option>
+                            <option value="5">5</option>
+                            <option value="7">7</option>
+                        </select>
+                    </div>
+                    <div class="grupo-form" style="flex: 1;">
+                        <label>Grupo:</label>
+                        <select name="grupo" required>
+                            <option value="01" selected>01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grupo-form">
+                    <label>Evidencia de estado inicial (Foto):</label>
+                    <input type="file" name="evidencia" accept="image/*">
+                </div>
+
+                <div class="btn-contenedor">
+                    <button type="submit" class="btn">Generar Préstamo</button>
+                    <button type="reset" class="btn btn-peligro">Cancelar</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

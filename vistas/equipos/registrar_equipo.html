@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Equipo - FIM</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>UAS | Sistema de Laboratorios FIM</h1>
+        <nav>
+            <a href="../../index.html">Panel de Control</a>
+            <a href="registrar_equipo.html" class="activo">Inventario</a>
+            <a href="../prestamos/nuevo_prestamo.html">Gestión de Préstamos</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Dar de Alta Nuevo Equipo</h2>
+        
+        <div class="tarjeta-formulario">
+            <form action="../../backend/guardar_equipo.php" method="POST">
+                
+                <div class="grupo-form">
+                    <label>ID / Número de Serie Institucional:</label>
+                    <input type="text" name="id_equipo" placeholder="Ej. FIM-LAP-001" required>
+                </div>
+
+                <div class="grupo-form">
+                    <label>Nombre del Dispositivo:</label>
+                    <input type="text" name="nombre_equipo" placeholder="Ej. Laptop Acer Nitro 5" required>
+                </div>
+
+                <div class="grupo-form">
+                    <label>Categoría:</label>
+                    <select name="categoria" required>
+                        <option value="">Seleccione una categoría...</option>
+                        <option value="computo">Equipo de Cómputo</option>
+                        <option value="proyeccion">Proyectores / Pantallas</option>
+                        <option value="redes">Material de Redes (Cables, Switches)</option>
+                        <option value="accesorios">Accesorios (Teclados, Ratones)</option>
+                    </select>
+                </div>
+
+                <div class="btn-contenedor">
+                    <button type="submit" class="btn">Guardar en Inventario</button>
+                    <button type="reset" class="btn btn-peligro">Limpiar</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

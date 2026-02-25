@@ -2,11 +2,52 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina Web</title>
+    <title>Dashboard - Préstamos FIM</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Bienvenido a mi pagina web</h1>
-    <p>Esta es una pagina de ejemplo creada para demostrar la estructura básica de un documento
+
+    <header>
+        <h1>UAS | Sistema de Laboratorios FIM</h1>
+        <nav>
+            <a href="index.html" class="activo">Panel de Control</a>
+            <a href="vistas/equipos/registrar_equipo.html">Inventario</a>
+            <a href="vistas/prestamos/nuevo_prestamo.html">Gestión de Préstamos</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Resumen de Operaciones</h2>
+        <p>Monitoreo en tiempo real de los equipos de la Facultad.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Matrícula Alumno</th>
+                    <th>ID Equipo</th>
+                    <th>Hora de Salida</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PR-001</td>
+                    <td>2008390-8</td>
+                    <td>EQ-CAÑON-05</td>
+                    <td>08:00 AM</td>
+                    <td style="color: red; font-weight: bold;">En Uso</td>
+                </tr>
+                <tr>
+                    <td>PR-002</td>
+                    <td>1904562-1</td>
+                    <td>EQ-LAP-12</td>
+                    <td>09:30 AM</td>
+                    <td style="color: green; font-weight: bold;">Devuelto</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
 </body>
 </html>
