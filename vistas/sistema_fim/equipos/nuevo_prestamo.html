@@ -3,50 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Préstamo - FIM</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../../css/style.css">
 </head>
 <body>
 
     <header>
         <h1>UAS | Sistema de Laboratorios FIM</h1>
         <nav>
-            <a href="../../index.html">Panel de Control</a>
-            <a href="../equipos/registrar_equipo.html">Inventario</a>
-            <a href="nuevo_prestamo.html" class="activo">Gestión de Préstamos</a>
-        </nav>
+<nav>
+    <a href="../dashboard.html">Panel de Control</a>
+    <a href="../equipos/catalogo.html" id="nav-equipos">Inventario</a>
+    <a href="../usuarios/registrar_usuario.html" id="nav-usuarios">Usuarios</a>
+    <a href="../prestamos/historial.html" id="nav-prestamos">Préstamos</a>
+</nav>
     </header>
 
     <main>
         <h2>Registrar Salida de Equipo (Bitácora)</h2>
         
         <div class="tarjeta-formulario">
-                
+            <form id="form-prestamo">    
                 <div class="grupo-form">
                     <label>Matrícula / ID del Solicitante:</label>
-                    <input type="text" name="matricula" placeholder="Ingrese matrícula del alumno o profesor" required>
+                    <input type="text" id="mat_solicitante" placeholder="Ej. 2008390-8" required>
                     <small style="color: #666; margin-top: 5px;">El sistema buscará automáticamente la carrera y el nombre vinculados.</small>
                 </div>
 
                 <div class="grupo-form">
                     <label>ID del Equipo a Prestar:</label>
-                    <input type="text" name="id_equipo" placeholder="Ej. FIM-LAP-001" required>
+                    <input type="text" id="id_eq_prestar" placeholder="Ej. FIM-LAP-001" required>
                 </div>
 
                 <div style="display: flex; gap: 20px;">
                     <div class="grupo-form" style="flex: 1;">
                         <label>Fecha de Salida:</label>
-                        <input type="date" name="fecha_salida" required>
+                        <input type="date" id="fecha_salida" required>
                     </div>
                     <div class="grupo-form" style="flex: 1;">
                         <label>Hora de Salida:</label>
-                        <input type="time" name="hora_salida" required>
+                        <input type="time" id="hora_salida" required>
                     </div>
                 </div>
 
                 <div style="display: flex; gap: 20px;">
                     <div class="grupo-form" style="flex: 1;">
                         <label>Semestre:</label>
-                        <select name="semestre" required>
+                        <select id="semestre" required>
                             <option value="1">1</option>
                             <option value="3" selected>3</option>
                             <option value="5">5</option>
@@ -55,17 +57,12 @@
                     </div>
                     <div class="grupo-form" style="flex: 1;">
                         <label>Grupo:</label>
-                        <select name="grupo" required>
+                        <select id="grupo" required>
                             <option value="01" selected>01</option>
                             <option value="02">02</option>
                             <option value="03">03</option>
                         </select>
                     </div>
-                </div>
-
-                <div class="grupo-form">
-                    <label>Evidencia de estado inicial (Foto):</label>
-                    <input type="file" name="evidencia" accept="image/*">
                 </div>
 
                 <div class="btn-contenedor">
@@ -77,5 +74,28 @@
         </div>
     </main>
 
+    <script>
+        document.getElementById('form-prestamo').addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita que la página intente ir a un servidor inexistente
+            
+            // Construimos el objeto del préstamo
+            const nuevoPrestamo = {
+                folio: "PR-" + Math.floor(Math.random() * 10000), // Genera un folio aleatorio
+                matricula: document.getElementById('mat_solicitante').value,
+                equipo: document.getElementById('id_eq_prestar').value,
+                estado: 'En Uso'
+            };
+            
+            // Leemos lo que ya existe en la memoria o creamos un arreglo vacío
+            let prestamos = JSON.parse(localStorage.getItem('prestamos_fim')) || [];
+            
+            // Añadimos el nuevo préstamo y lo volveamos a guardar
+            prestamos.push(nuevoPrestamo);
+            localStorage.setItem('prestamos_fim', JSON.stringify(prestamos));
+            
+            alert("Préstamo Generado con Éxito. Redirigiendo al Historial...");
+            window.location.href = "historial.html"; // Redirige automáticamente
+        });
+    </script>
 </body>
 </html>

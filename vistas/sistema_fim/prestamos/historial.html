@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Préstamos - FIM</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>UAS | Sistema de Laboratorios FIM</h1>
+<nav>
+    <a href="../dashboard.html">Panel de Control</a>
+    <a href="../equipos/catalogo.html" id="nav-equipos">Inventario</a>
+    <a href="../usuarios/registrar_usuario.html" id="nav-usuarios">Usuarios</a>
+    <a href="../prestamos/historial.html" id="nav-prestamos">Préstamos</a>
+</nav>
+    </header>
+
+    <main>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Registro Histórico y Devoluciones</h2>
+            <a href="nuevo_prestamo.html" class="btn">+ Registrar Salida</a>
+        </div>
+
+        <div class="tarjeta-formulario" style="margin-bottom: 20px; padding: 15px;">
+            <form style="display: flex; gap: 10px; align-items: center;">
+                <label>Buscar por Matrícula:</label>
+                <input type="text" placeholder="Ej. 2008390-8" style="flex: 1;">
+                <button type="button" class="btn">Buscar</button>
+            </form>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Matrícula</th>
+                    <th>ID Equipo</th>
+                    <th>Estado de Entrega</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-historial">
+                </tbody>
+        </table>
+    </main>
+
+    <script>
+        // Leemos los datos de la memoria
+        const prestamos = JSON.parse(localStorage.getItem('prestamos_fim')) || [];
+        const tbody = document.getElementById('tabla-historial');
+        
+        // Si no hay datos, mostramos un mensaje
+        if(prestamos.length === 0) {
+            tbody.innerHTML = "<tr><td colspan='4' style='text-align:center;'>No hay préstamos registrados aún.</td></tr>";
+        } else {
+            // Recorremos los datos y creamos las filas
+            prestamos.forEach(p => {
+                const color = p.estado === 'En Uso' ? 'red' : 'green';
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${p.folio}</td>
+                        <td>${p.matricula}</td>
+                        <td>${p.equipo}</td>
+                        <td style="color: ${color}; font-weight: bold;">${p.estado}</td>
+                    </tr>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>

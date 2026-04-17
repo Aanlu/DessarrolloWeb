@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 24 - Fechas</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body style="background-color: transparent;">
+    <div class="tarjeta-formulario" style="max-width: 600px; margin: 30px auto; text-align: center;">
+        <h2 style="color: var(--uas-azul);">Ejercicio 24: Procesamiento de Fechas</h2>
+        <p>Traducción de índices numéricos de tiempo mediante <code>switch</code>.</p>
+        
+        <div id="caja-fecha" style="background: var(--uas-azul); color: white; padding: 30px; border-radius: 8px; font-size: 24px; margin-top: 20px; border-bottom: 5px solid var(--uas-oro);">
+            </div>
+    </div>
+
+    <script>
+        const fechaActual = new Date();
+        
+        const diaNum = fechaActual.getDay(); // 0-6
+        const mesNum = fechaActual.getMonth(); // 0-11
+        const diaMes = fechaActual.getDate(); // 1-31
+        const anio = fechaActual.getFullYear(); // ej. 2026
+        
+        let diaStr = "";
+        let mesStr = "";
+
+        // Switch para el Día
+        switch(diaNum) {
+            case 0: diaStr = "domingo"; break;
+            case 1: diaStr = "lunes"; break;
+            case 2: diaStr = "martes"; break;
+            case 3: diaStr = "miércoles"; break;
+            case 4: diaStr = "jueves"; break;
+            case 5: diaStr = "viernes"; break;
+            case 6: diaStr = "sábado"; break;
+        }
+
+        // Switch para el Mes
+        switch(mesNum) {
+            case 0: mesStr = "Enero"; break;
+            case 1: mesStr = "Febrero"; break;
+            case 2: mesStr = "Marzo"; break;
+            case 3: mesStr = "Abril"; break;
+            case 4: mesStr = "Mayo"; break;
+            case 5: mesStr = "Junio"; break;
+            case 6: mesStr = "Julio"; break;
+            case 7: mesStr = "Agosto"; break;
+            case 8: mesStr = "Septiembre"; break;
+            case 9: mesStr = "Octubre"; break;
+            case 10: mesStr = "Noviembre"; break;
+            case 11: mesStr = "Diciembre"; break;
+        }
+
+        const cadenaFinal = `Hoy es ${diaStr} ${diaMes} de ${mesStr} del año ${anio}`;
+        document.getElementById('caja-fecha').innerText = cadenaFinal;
+    </script>
+</body>
+</html>

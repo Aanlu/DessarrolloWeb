@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 25 - Tablas Fijas</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /* CSS específico para maquetar las tablas en cuadrícula */
+        .grid-tablas { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .tabla-card { background: white; border: 1px solid var(--borde); border-top: 3px solid var(--uas-azul); padding: 15px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .tabla-card h4 { margin-top: 0; color: var(--uas-oro); text-align: center; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .tabla-card p { margin: 3px 0; font-family: monospace; font-size: 14px; }
+    </style>
+</head>
+<body style="background-color: transparent;">
+    <div class="tarjeta-formulario" style="max-width: 900px; margin: 30px auto;">
+        <h2 style="color: var(--uas-azul);">Ejercicio 25: Tablas del 1 al 10</h2>
+        <button class="btn" onclick="generarTablas()">Generar Tablas de Multiplicar</button>
+        
+        <div id="contenedor-tablas" class="grid-tablas">
+            </div>
+    </div>
+
+    <script>
+        function generarTablas() {
+            let bufferHTML = ""; // Variable temporal para optimizar rendimiento
+
+            // Bucle Externo (Define la tabla del 1, del 2...)
+            for (let i = 1; i <= 10; i++) {
+                bufferHTML += `<div class="tabla-card"><h4>Tabla del ${i}</h4>`;
+                
+                // Bucle Interno (Realiza la multiplicación por 1, por 2...)
+                for (let j = 1; j <= 10; j++) {
+                    bufferHTML += `<p>${i} x ${j} = <strong>${i * j}</strong></p>`;
+                }
+                
+                bufferHTML += `</div>`;
+            }
+
+            // Única inyección al DOM
+            document.getElementById('contenedor-tablas').innerHTML = bufferHTML;
+        }
+    </script>
+</body>
+</html>

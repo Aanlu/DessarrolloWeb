@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 19 - Salidas JS</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body style="background-color: transparent;"> <div class="tarjeta-formulario" style="max-width: 800px; margin: 30px auto;">
+        <h2 style="color: var(--uas-azul);">Ejercicio 19: Formas de Salida en JavaScript</h2>
+        <p>Demostración de los métodos de salida utilizando los datos personales del alumno.</p>
+        <hr style="border: 1px solid var(--borde); margin-bottom: 20px;">
+
+        <h3 style="color: var(--uas-oro);">1. Salida en el DOM (innerHTML)</h3>
+        <div id="salida-dom" style="padding: 15px; background: #e9ecef; border-left: 4px solid var(--uas-azul); margin-bottom: 20px;">
+            </div>
+
+        <h3 style="color: var(--uas-oro);">2. Salida con document.write()</h3>
+        <div style="padding: 15px; background: #e9ecef; border-left: 4px solid var(--uas-azul); margin-bottom: 20px;">
+            <script>
+                // Se ejecuta exactamente en el momento en que el navegador lee esta línea
+                document.write("<p><strong>Ubicación Académica:</strong> Facultad de Ingeniería Mochis (FIM) - UAS.</p>");
+            </script>
+        </div>
+
+        <h3 style="color: var(--uas-oro);">3 y 4. Salidas de Interrupción y Depuración</h3>
+        <div class="btn-contenedor" style="margin-top: 15px;">
+            <button class="btn" onclick="mostrarAlerta()">Ejecutar alert()</button>
+            <button class="btn" style="background-color: #28a745; color: white;" onclick="mostrarConsola()">Ejecutar console.log() (F12)</button>
+        </div>
+    </div>
+
+    <script>
+        // Declaración de variables con tus datos reales
+        const nombreAlumno = "Luis Antonio Cázares Sánchez";
+        const carrera = "Ingeniería de Software";
+        const semestre = "3er Semestre"; // Basado en tus configuraciones previas
+
+        // Método 1: innerHTML (Inyección limpia y segura)
+        document.getElementById('salida-dom').innerHTML = `
+            <p style="margin: 5px 0;"><strong>Estudiante:</strong> ${nombreAlumno}</p>
+            <p style="margin: 5px 0;"><strong>Programa:</strong> ${carrera}</p>
+            <p style="margin: 5px 0;"><strong>Nivel:</strong> ${semestre}</p>
+        `;
+
+        // Método 3: Función para el Alert
+        function mostrarAlerta() {
+            alert(`SISTEMA DE ALERTA:\n\nUsuario logueado: ${nombreAlumno}\nCarrera: ${carrera}`);
+        }
+
+        // Método 4: Función para la Consola
+        function mostrarConsola() {
+            console.log("=========================================");
+            console.log("🛠️ DATOS DE DEPURACIÓN DEL DESARROLLADOR");
+            console.log("=========================================");
+            console.log(`Nombre en memoria: ${nombreAlumno}`);
+            console.log(`Carrera en memoria: ${carrera}`);
+            console.log("Estado: Conexión estable con el DOM.");
+            console.log("=========================================");
+            
+            // Feedback visual para que sepas que se ejecutó correctamente
+            alert("Los datos han sido enviados a la consola del desarrollador. Presiona F12 y ve a la pestaña 'Console' para verlos.");
+        }
+    </script>
+</body>
+</html>

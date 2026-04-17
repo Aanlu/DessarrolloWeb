@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 20 - Operaciones</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="tarjeta-formulario" style="max-width: 600px; margin: 40px auto;">
+        <h2 style="color: var(--uas-azul);">Ejercicio 20: Operaciones Aritméticas Base</h2>
+        <hr>
+        <div id="resultados" style="background: #f8f9fa; padding: 20px; border-radius: 5px; border-left: 4px solid var(--uas-oro);">
+            </div>
+    </div>
+
+    <script>
+        // 1. Declaración y asignación de variables estáticas
+        const numA = 15;
+        const numB = 4;
+
+        // 2. Procesamiento
+        const suma = numA + numB;
+        const resta = numA - numB;
+        const division = numA / numB;
+        const exponenciacion = numA ** numB; // Operador de potencia introducido en ES7
+
+        // 3. Salida al DOM usando Template Literals
+        const contenedor = document.getElementById('resultados');
+        contenedor.innerHTML = `
+            <p>Valores asignados: <strong>A = ${numA}</strong> y <strong>B = ${numB}</strong></p>
+            <ul>
+                <li><strong>Suma:</strong> ${numA} + ${numB} = ${suma}</li>
+                <li><strong>Resta:</strong> ${numA} - ${numB} = ${resta}</li>
+                <li><strong>División:</strong> ${numA} / ${numB} = ${division}</li>
+                <li><strong>Exponenciación:</strong> ${numA}<sup>${numB}</sup> = ${exponenciacion}</li>
+            </ul>
+        `;
+    </script>
+</body>
+</html>

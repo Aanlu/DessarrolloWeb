@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Equipo - FIM</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>UAS | Sistema de Laboratorios FIM</h1>
+<nav>
+    <a href="../dashboard.html">Panel de Control</a>
+    <a href="../equipos/catalogo.html" id="nav-equipos">Inventario</a>
+    <a href="../usuarios/registrar_usuario.html" id="nav-usuarios">Usuarios</a>
+    <a href="../prestamos/historial.html" id="nav-prestamos">Préstamos</a>
+</nav>
+    </header>
+
+    <main>
+        <h2>Dar de Alta Nuevo Equipo</h2>
+        <div class="tarjeta-formulario">
+            <form id="form-equipo">
+                <div class="grupo-form">
+                    <label>ID / Número de Serie Institucional:</label>
+                    <input type="text" id="id_eq" placeholder="Ej. FIM-LAP-002" required>
+                </div>
+                <div class="grupo-form">
+                    <label>Nombre del Dispositivo:</label>
+                    <input type="text" id="nom_eq" placeholder="Ej. Laptop" required>
+                </div>
+                <div class="btn-contenedor">
+                    <button type="submit" class="btn">Guardar en Inventario</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('form-equipo').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nuevoEquipo = {
+                id: document.getElementById('id_eq').value,
+                desc: document.getElementById('nom_eq').value,
+                estado: 'Disponible'
+            };
+            
+            let equipos = JSON.parse(localStorage.getItem('equipos_fim')) || [];
+            equipos.push(nuevoEquipo);
+            localStorage.setItem('equipos_fim', JSON.stringify(equipos));
+            
+            alert("Equipo Registrado. Redirigiendo al catálogo...");
+            window.location.href = "catalogo.html";
+        });
+    </script>
+</body>
+</html>

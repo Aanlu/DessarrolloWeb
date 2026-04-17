@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 22 - Fórmula General</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body style="background-color: transparent;">
+
+    <div class="tarjeta-formulario" style="max-width: 600px; margin: 30px auto;">
+        <h2 style="color: var(--uas-azul);">Ejercicio 22: Calculadora de Ecuaciones Cuadráticas</h2>
+        <p style="text-align: center; font-style: italic;">Formato: ax² + bx + c = 0</p>
+        <hr>
+
+        <form id="form-cuadratica">
+            <div style="display: flex; gap: 10px;">
+                <div class="grupo-form" style="flex: 1;">
+                    <label>Valor de a:</label>
+                    <input type="number" id="a" step="any" placeholder="Ej. 1" required>
+                </div>
+                <div class="grupo-form" style="flex: 1;">
+                    <label>Valor de b:</label>
+                    <input type="number" id="b" step="any" placeholder="Ej. -3" required>
+                </div>
+                <div class="grupo-form" style="flex: 1;">
+                    <label>Valor de c:</label>
+                    <input type="number" id="c" step="any" placeholder="Ej. 2" required>
+                </div>
+            </div>
+            
+            <div class="btn-contenedor">
+                <button type="button" class="btn" onclick="calcularChicharronera()" style="width: 100%;">Calcular x1 y x2</button>
+            </div>
+        </form>
+
+        <div id="pantalla-resultados" style="margin-top: 25px; padding: 20px; border-radius: 8px; text-align: center; font-size: 18px; border: 1px solid var(--borde); background: #fdfdfd;">
+            Ingrese los coeficientes para comenzar.
+        </div>
+    </div>
+
+    <script>
+        function calcularChicharronera() {
+            // Conversión de datos de entrada
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+            const display = document.getElementById('pantalla-resultados');
+
+            // 1. Validación de campos vacíos
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                display.innerHTML = "<span style='color: red;'>Error: Todos los campos son obligatorios.</span>";
+                return;
+            }
+
+            // 2. Validación de división por cero
+            if (a === 0) {
+                display.innerHTML = "<span style='color: #856404;'>Si 'a' es 0, no es una ecuación cuadrática (división por cero).</span>";
+                return;
+            }
+
+            // 3. Cálculo del discriminante (D = b² - 4ac)
+            const discriminante = Math.pow(b, 2) - (4 * a * c);
+
+            if (discriminante < 0) {
+                // Caso: Raíces imaginarias
+                display.style.borderColor = "red";
+                display.innerHTML = `
+                    <p style="color: red;"><strong>Sin soluciones reales</strong></p>
+                    <p style="font-size: 14px;">El discriminante es ${discriminante.toFixed(2)}. Las raíces son complejas.</p>
+                `;
+            } else {
+                // Caso: Raíces reales
+                const x1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+                const x2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+
+                display.style.borderColor = "var(--uas-oro)";
+                display.innerHTML = `
+                    <p style="color: var(--uas-azul); font-weight: bold;">Resultados Obtenidos:</p>
+                    <p><strong>x1 = ${x1.toFixed(4)}</strong></p>
+                    <p><strong>x2 = ${x2.toFixed(4)}</strong></p>
+                `;
+                
+                // Alert solicitado por la consigna del ejercicio
+                alert(`Cálculo finalizado:\nx1 = ${x1.toFixed(4)}\nx2 = ${x2.toFixed(4)}`);
+            }
+        }
+    </script>
+</body>
+</html>

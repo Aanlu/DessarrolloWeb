@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Equipos - FIM</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>UAS | Sistema de Laboratorios FIM</h1>
+<nav>
+    <a href="../dashboard.html">Panel de Control</a>
+    <a href="../equipos/catalogo.html" id="nav-equipos">Inventario</a>
+    <a href="../usuarios/registrar_usuario.html" id="nav-usuarios">Usuarios</a>
+    <a href="../prestamos/historial.html" id="nav-prestamos">Préstamos</a>
+</nav>
+    </header>
+
+    <main>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Catálogo General de Equipos</h2>
+            <a href="registrar_equipo.html" class="btn">+ Añadir Nuevo Equipo</a>
+        </div>
+        <table>
+            <thead>
+                <tr><th>ID</th><th>Descripción</th><th>Estado Actual</th></tr>
+            </thead>
+            <tbody id="tabla-catalogo">
+                </tbody>
+        </table>
+    </main>
+
+    <script>
+        const equipos = JSON.parse(localStorage.getItem('equipos_fim')) || [];
+        const tbody = document.getElementById('tabla-catalogo');
+        
+        equipos.forEach(eq => {
+            const color = eq.estado === 'Disponible' ? 'green' : (eq.estado === 'En Uso' ? 'red' : 'orange');
+            tbody.innerHTML += `<tr>
+                <td>${eq.id}</td>
+                <td>${eq.desc}</td>
+                <td style="color: ${color}; font-weight: bold;">${eq.estado}</td>
+            </tr>`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Usuario - FIM</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>UAS | Sistema de Laboratorios FIM</h1>
+        <nav>
+    <a href="../dashboard.html">Panel de Control</a>
+    <a href="../equipos/catalogo.html" id="nav-equipos">Inventario</a>
+    <a href="../usuarios/registrar_usuario.html" id="nav-usuarios">Usuarios</a>
+    <a href="../prestamos/historial.html" id="nav-prestamos">Préstamos</a>
+</nav>
+    </header>
+
+    <main>
+        <h2>Alta de Nuevo Estudiante / Docente</h2>
+        
+        <div class="tarjeta-formulario">
+            <form id="form-usuario">    
+                <div class="grupo-form">
+                    <label>Matrícula / Número de Empleado:</label>
+                    <input type="text" id="mat_user" placeholder="Ej. 2008390-8" required>
+                </div>
+                <div class="grupo-form">
+                    <label>Nombre Completo:</label>
+                    <input type="text" id="nom_user" placeholder="Apellidos y Nombre(s)" required>
+                </div>
+                <div class="btn-contenedor">
+                    <button type="submit" class="btn">Guardar Usuario</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('form-usuario').addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita recargar la página
+            alert("Usuario " + document.getElementById('nom_user').value + " guardado con éxito (Simulación).");
+            this.reset();
+        });
+    </script>
+</body>
+</html>

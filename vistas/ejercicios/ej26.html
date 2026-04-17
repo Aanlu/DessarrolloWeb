@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 26 - Tablas Dinámicas</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .grid-tablas { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .tabla-card { background: white; border: 1px solid var(--borde); border-top: 3px solid var(--uas-oro); padding: 15px; border-radius: 6px; }
+        .tabla-card h4 { margin-top: 0; color: var(--uas-azul); text-align: center; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .tabla-card p { margin: 3px 0; font-family: monospace; font-size: 14px; }
+    </style>
+</head>
+<body style="background-color: transparent;">
+    <div class="tarjeta-formulario" style="max-width: 900px; margin: 30px auto;">
+        <h2 style="color: var(--uas-azul);">Ejercicio 26: Generador Dinámico de Tablas</h2>
+        
+        <form id="form-dinamico" style="display: flex; gap: 15px; align-items: flex-end;">
+            <div class="grupo-form" style="flex: 1; margin-bottom: 0;">
+                <label>Generar tablas desde el 1 hasta el número:</label>
+                <input type="number" id="limite" placeholder="Ingrese un entero positivo" min="1" max="100" required>
+            </div>
+            <button type="button" class="btn" onclick="generarTablasDinamicas()">Generar</button>
+        </form>
+
+        <div id="contenedor-dinamico" class="grid-tablas"></div>
+    </div>
+
+    <script>
+        function generarTablasDinamicas() {
+            // Se fuerza la conversión a entero para evitar decimales
+            const limite = parseInt(document.getElementById('limite').value);
+            const contenedor = document.getElementById('contenedor-dinamico');
+
+            // Programación defensiva (Validación estricta)
+            if (isNaN(limite) || limite <= 0) {
+                alert("Error: Por favor ingrese un número entero positivo mayor a cero.");
+                return;
+            }
+
+            if (limite > 50) {
+                alert("Alerta de Rendimiento: Por motivos de memoria, el límite máximo permitido es 50.");
+                return;
+            }
+
+            let bufferHTML = "";
+
+            // Bucle dinámico controlado por el usuario
+            for (let i = 1; i <= limite; i++) {
+                bufferHTML += `<div class="tabla-card"><h4>Tabla del ${i}</h4>`;
+                
+                for (let j = 1; j <= 10; j++) {
+                    bufferHTML += `<p>${i} x ${j} = <strong>${i * j}</strong></p>`;
+                }
+                
+                bufferHTML += `</div>`;
+            }
+
+            contenedor.innerHTML = bufferHTML;
+        }
+    </script>
+</body>
+</html>
